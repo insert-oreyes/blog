@@ -81,7 +81,8 @@ form.register {
   margin: 0 auto;
 }
 
-form h1 {
+form.login h1,
+form.register h1 {
   text-align: center;
 }
 
@@ -106,8 +107,4 @@ button {
   border: none;
   padding: 7px 0;
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
 }
