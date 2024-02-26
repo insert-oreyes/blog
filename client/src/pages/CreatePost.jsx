@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { useState } from 'react'
 
 const modules = {
   toolbar: [
@@ -37,22 +37,20 @@ export default function CreatePost() {
   const [content, setContent] = useState('')
   const [files, setFiles] = useState('')
 
-  function createNewPost(event) {
+  async function createNewPost(event) {
     const data = new FormData()
     data.set('title', title)
     data.set('summary', summary)
     data.set('content', content)
-    data.set('file', files)
+    data.set('file', files[0])
     event.preventDefault()
     console.log(files)
-    // fetch('http://localhost:4000/posts', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     title,
-    //     summary,
-    //     content,
-    //   }),
-    // })
+    const response = await fetch('http://localhost:4000/post', {
+      method: 'POST',
+      body: data,
+    })
+
+    console.log(await response.json())
   }
 
   return (
@@ -69,7 +67,7 @@ export default function CreatePost() {
         value={summary}
         onChange={(event) => setSummary(event.target.value)}
       />
-      <input type='file' onChange={(event) => event.target.files} />
+      <input type='file' onChange={(event) => setFiles(event.target.files)} />
       <ReactQuill
         value={content}
         modules={modules}
