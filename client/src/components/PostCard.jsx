@@ -1,20 +1,21 @@
 import React from 'react'
+import { formatISO9075 } from 'date-fns'
 
-export default function PostCard({ image, title, author, time, paragraph }) {
+export default function PostCard({ title, summary, cover, createdAt, author }) {
   return (
-    <div className='post' key={author + time}>
+    <div className='post'>
       <div className='image'>
-        <img src={image} alt='' />
+        <img src={'http://localhost:4000/' + cover} alt='' />
       </div>
       <div className='texts'>
         <h2>{title}</h2>
         <p className='info'>
           <a href='/' className='author'>
-            {author}
+            {author.username}
           </a>
-          <time>{time}</time>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
-        <p className='summary'>{paragraph}</p>
+        <p className='summary'>{summary}</p>
       </div>
     </div>
   )
