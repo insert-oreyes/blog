@@ -13,14 +13,12 @@ img {
 }
 
 main {
-  background-color: red;
   padding: 10px;
   max-width: 700px;
   margin: 0 auto;
 }
 
 header {
-  background-color: lightblue;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -45,7 +43,6 @@ header nav {
 
 /* styles of PostCard */
 div.post {
-  background-color: lightgreen;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 20px;
